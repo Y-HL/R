@@ -8,7 +8,7 @@ output: html_document
 # (1) 請問資料中各健康狀狀況的分佈比例例為何？
 ```{R}
 library(ggplot2)
-load('D:/Riii/Statistics/cdc.Rdata')
+load('cdc.Rdata')
 group=levels(cdc$genhlth)
 lev=0
 for(i in 1:5){lev[i]<-sum(cdc$genhlth==group[i])}
