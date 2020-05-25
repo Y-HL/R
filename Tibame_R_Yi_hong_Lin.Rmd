@@ -56,7 +56,6 @@ g <- ggplot(cdc, aes(x = genhlth, y = BMI)) +
   theme(plot.title = element_text(hjust = 0.5))+
   scale_x_discrete(name = "健康狀況")
 g
-
 ```
 #(5) 請問身高、體重、年紀的相關係數為何？
 ```{R}
