@@ -2,7 +2,8 @@
 title: "test10"
 author: "Yi_hong_Lin"
 date: "2020/5/24"
-output: html_document
+output:
+  html_document: default
 ---
 
 # (1) 請問資料中各健康狀狀況的分佈比例例為何？
@@ -26,7 +27,7 @@ ggplot(df, aes (x="",y=lev,fill= group2))+
   coord_polar("y")
 ```
 
-#(2) 請問資料中男女⽣生有抽煙比率各為多少？
+#(2) 請問資料中男女生有抽煙比率各為多少？
 ```{R}
 library('dplyr')
 smoke<-cdc %>%
@@ -37,14 +38,12 @@ smoke
 
 #(3) 請繪製年紀的直方圖。
 ```{R}
-cdc$age.class = cut(cdc$age,seq(0,100,20),right=F)
-levels(cdc$age) = c("Short","Medium","Long")
+cdc$age.class = cut(cdc$age,seq(0,100,10),right=F)
 g = ggplot(cdc,aes(age.class))
 g+geom_bar(aes(fill=age.class))+
-  scale_x_discrete(name = "年齡")+
+  scale_x_discrete(name = "age")+
   theme(plot.title = element_text(hjust = 0.5))+
-  scale_y_discrete(name = "人數")+
-  labs(fill = "年齡層",x = NULL,y = NULL,title = "年齡-人數統計") 
+  labs(title = "age-count") 
 ```
 #(4) 請繪製不同健康狀況族群BMI指數的盒鬚圖。
 • 註1: 英制bmi公式 體重 / 身高^2 * 703
@@ -62,7 +61,7 @@ g
 #(5) 請問身高、體重、年紀的相關係數為何？
 ```{R}
 corval<-c(cor(cdc$height,cdc$weight),cor(cdc$weight,cdc$age),cor(cdc$height,cdc$age))
-items<-c('身高-體重','體重-年紀','身高-年紀')
-cortable<-data.frame(items,corval)
+items_cor<-c('身高-體重','體重-年紀','身高-年紀')
+cortable<-data.frame(items_cor,corval)
 cortable
 ```
